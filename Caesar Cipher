@@ -1,0 +1,20 @@
+text = 'Hello Zaira'
+shift = 3
+
+def caesar(message, offset):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    encrypted_text = ''
+    for char in message.lower():
+# Append space to the message
+        if char == ' ':
+            encrypted_text += char
+# assigns each letter of the text to a different letter based on the offset
+        else:
+            index = alphabet.find(char)
+            new_index = (index + offset) % len(alphabet)
+            encrypted_text += alphabet[new_index]
+# prints out the text then the modified text
+    print('plain text:', message)
+    print('encrypted text:', encrypted_text)
+# calling the function
+caesar(text, shift)
