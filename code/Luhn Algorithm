@@ -1,0 +1,42 @@
+def verify_card_number(card_number):
+    sum_of_odd_digits = 0
+
+    #reverses the card number order
+    card_number_reversed = card_number[::-1]
+
+    #a variable that stores only the odd digits of the reversed card number
+    odd_digits = card_number_reversed[::2]
+
+    for digit in odd_digits:
+        sum_of_odd_digits += int(digit)
+
+    sum_of_even_digits = 0
+
+    #a variable that stores only even digits of the reversed card number
+    even_digits = card_number_reversed[1::2]
+    for digit in even_digits:
+        number = int(digit) * 2
+
+        #if number is greater or equal to 10 then add the digits together
+        if number >= 10:
+            number = (number // 10) + (number % 10)
+        sum_of_even_digits += number
+    total = sum_of_odd_digits + sum_of_even_digits
+    return total % 10 == 0
+
+def main():
+    card_number = '4111-1111-4555-1142'
+
+    #makes sure that the card number only has numbers
+    card_translation = str.maketrans({'-': '', ' ': ''})
+
+    #a variable for inputting the new value of card number
+    translated_card_number = card_number.translate(card_translation)
+
+    #if the total modulus 10 is equal to 0 then it will return true and print VALID!, else INVALID!
+    if verify_card_number(translated_card_number):
+        print('VALID!')
+    else:
+        print('INVALID!')
+
+main()
