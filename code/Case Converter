@@ -1,0 +1,16 @@
+def convert_to_snake_case(pascal_or_camel_cased_string):
+    #this list is a list compression where all the code is simplified into a list with expressions and conditions
+    #the list turns every char lowercase if it is uppercase and prepends an underscore with the char
+    snake_cased_char_list = [
+        '_' + char.lower() if char.isupper()
+        else char
+        for char in pascal_or_camel_cased_string
+    ]
+    #this will join every char with an empty list to delete any spaces and remove any trailing or leading underscores
+    return ''.join(snake_cased_char_list).strip('_')
+
+def main():
+    #prints out the text converted into the snake case
+    print(convert_to_snake_case('aLongAndComplexString'))
+
+main()
